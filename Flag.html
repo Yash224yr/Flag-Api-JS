@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Flag.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="left">
+            <input type="text" placeholder="Enter Country Name">
+            <button>Click</button>
+        </div>
+        <div class="right">
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+
+        let right=document.querySelector(".right")
+        let input=document.querySelector(".left input")
+        let image=document.querySelector(".right img")
+        let btn=document.querySelector("button")
+
+        function flag() {
+            fetch("https://flagcdn.com/en/codes.json")
+                .then((response) => {
+                    return response.json()
+                })
+                .then((resolve) => {
+                    showflag(resolve)
+                })
+        }
+
+        btn.onclick=()=>{
+            flag()
+        }
+
+        function showflag(data) {
+            for(let i in data){ 
+                if (input.value === data[i]) {
+                    image.src = "https://flagcdn.com/160x120/"+ [i]  + ".png"
+                }
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>
