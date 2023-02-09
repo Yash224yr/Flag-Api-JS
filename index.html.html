@@ -13,7 +13,7 @@
     <div id="wrapper">
         <div class="left">
             <input type="text" placeholder="Enter Country Name">
-            <button>Click</button>
+            <button>Get Flag</button>
         </div>
         <div class="right">
             <img src="" alt="">
@@ -26,6 +26,7 @@
         let input=document.querySelector(".left input")
         let image=document.querySelector(".right img")
         let btn=document.querySelector("button")
+        let wra = document.querySelector("#wrapper")
 
         function flag() {
             fetch("https://flagcdn.com/en/codes.json")
@@ -38,7 +39,9 @@
         }
 
         btn.onclick=()=>{
+            document.querySelector(".right").style.display="flex"
             flag()
+            
         }
 
         function showflag(data) {
